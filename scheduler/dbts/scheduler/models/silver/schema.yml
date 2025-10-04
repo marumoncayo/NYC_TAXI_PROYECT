@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: yellow_trips
+    description: "Datos depurados y estandarizados de Yellow Taxi"
+    columns:
+      - name: pickup_datetime
+        description: "Fecha y hora de inicio del viaje"
+        tests:
+          - not_null
+      - name: dropoff_datetime
+        description: "Fecha y hora de fin del viaje"
+        tests:
+          - not_null
+      - name: trip_distance
+        description: "Distancia del viaje en millas"
+        tests:
+          - not_null
+      - name: fare_amount
+        description: "Monto de la tarifa en dólares"
+        tests:
+          - not_null
+
+  - name: green_trips
+    description: "Datos depurados y estandarizados de Green Taxi"
+    columns:
+      - name: pickup_datetime
+        description: "Fecha y hora de inicio del viaje"
+        tests:
+          - not_null
+      - name: dropoff_datetime
+        description: "Fecha y hora de fin del viaje"
+        tests:
+          - not_null
+      - name: trip_distance
+        description: "Distancia del viaje en millas"
+        tests:
+          - not_null
+      - name: fare_amount
+        description: "Monto de la tarifa en dólares"
+        tests:
+          - not_null

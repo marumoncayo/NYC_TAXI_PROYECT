@@ -1,0 +1,66 @@
+version: 2
+
+models:
+  - name: fct_trips
+    description: "Tabla de hechos de viajes de taxi"
+    columns:
+      - name: trip_sk
+        description: "Surrogate key del viaje"
+        tests:
+          - unique
+          - not_null
+      - name: pickup_date_sk
+        description: "Foreign key a dim_date"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: date_sk
+      - name: pickup_zone_sk
+        description: "Foreign key a dim_zone (pickup)"
+        tests:
+          - relationships:
+              to: ref('dim_zone')
+              field: zone_sk
+      - name: dropoff_zone_sk
+        description: "Foreign key a dim_zone (dropoff)"
+        tests:
+          - relationships:
+              to: ref('dim_zone')
+              field: zone_sk
+      - name: service_type
+        tests:
+          - accepted_values:
+              values: ['yellow', 'green']
+
+  - name: dim_date
+    description: "Dimensión de fechas"
+    columns:
+      - name: date_sk
+        tests:
+          - unique
+          - not_null
+      - name: date_day
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_zone
+    description: "Dimensión de zonas de NYC"
+    columns:
+      - name: zone_sk
+        tests:
+          - unique
+          - not_null
+      - name: zone_id
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_payment_type
+    description: "Dimensión de tipos de pago"
+    columns:
+      - name: payment_type_sk
+        tests:
+          - unique
+          - not_null

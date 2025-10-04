@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Tablas raw cargadas desde Mage a Snowflake"
+    database: NY_TAXI
+    schema: BRONZE
+    tables:
+      - name: green_trips
+        identifier: '"green_trips"'  
+      - name: yellow_trips
+        identifier: '"yellow_trips"'
+      - name: taxi_zones  
