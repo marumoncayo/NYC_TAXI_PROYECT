@@ -1,0 +1,11 @@
+services:
+  scheduler:
+    image: mageai/mageai
+    volumes:
+      - "./dt_sched:/home/src"
+      - "./dbt_nyc_taxi:/home/dbt"
+    ports:
+      - "6789:6789"
+    command: /app/run_app.sh mage start scheduler
+    environment:
+      - MAGE_DATA_DIR=/home/src
